@@ -17,5 +17,29 @@ package sum
 import "testing"
 
 func TestRecursive(t *testing.T) {
-	// Implement the body of this test, calling recursive.
+	tt := []struct {
+		name    string
+		numbers []int
+		sum     int
+	}{
+		{"one to five", []int{1, 2, 3, 4, 5}, 15},
+		{"empty slice", []int{}, 0},
+		{"nil slice", nil, 0},
+		{"one and minus one", []int{-1, 1}, 0},
+	}
+
+	for _, tc := range tt {
+		t.Run(tc.name, func(t *testing.T) {
+			s := recursive(tc.numbers)
+			if s != tc.sum {
+				t.Errorf("expected sum to be %d; got %d", tc.sum, s)
+			}
+		})
+	}
+
+	// 	expected := 6
+	// 	actual := All(1, 2, 3)
+	// 	if expected != actual {
+	// 		t.Errorf("expected %d to eq %d", actual, expected)
+	// 	}
 }

@@ -28,9 +28,9 @@ func main() {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	re := regexp.MustCompile("^([[:alpha:]]+)@golang.org$")
-	match := re.FindStringSubmatch(r.URL.Path)
+	match := re.FindStringSubmatch(r.URL.Path[1:])
 	msg := "hello, stranger"
-	if len(match) == 1 {
+	if len(match) == 2 {
 		msg = "hello, " + match[1]
 	}
 	if _, err := fmt.Fprintln(w, msg); err != nil {

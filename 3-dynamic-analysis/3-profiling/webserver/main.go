@@ -21,6 +21,8 @@ import (
 	"regexp"
 )
 
+import _ "net/http/pprof"
+
 func main() {
 	http.HandleFunc("/", handler)
 	log.Printf("listening on localhost:8080")

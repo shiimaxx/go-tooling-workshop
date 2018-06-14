@@ -14,8 +14,17 @@
 
 package sum_test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/campoy/go-tooling-workshop/3-dynamic-analysis/2-testing/sum"
+)
 
 func TestAll(t *testing.T) {
 	// Implement the body of this test, calling sum.All.
+	expected := 6
+	actual := sum.All(1, 2, 3)
+	if expected != actual {
+		t.Errorf("expected %d to eq %d", actual, expected)
+	}
 }
